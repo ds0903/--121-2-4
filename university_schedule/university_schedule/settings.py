@@ -38,9 +38,32 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # third party
     'rest_framework',
-    'schedule',
+    'django_filters',
+    'rest_framework.authtoken',
+
+    # apps
+    'university_schedule.core',
+    'university_schedule.schedule',
+    'university_schedule.stats',
+    'university_schedule.users',
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,7 +75,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'university_schedule.urls'
+ROOT_URLCONF = 'university_schedule.university_schedule.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +92,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'university_schedule.wsgi.application'
+WSGI_APPLICATION = 'university_schedule.university_schedule.wsgi.application'
 
 
 # Database
