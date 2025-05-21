@@ -1,3 +1,7 @@
+# university_schedule/stats/urls.py
 from django.urls import path
-from .views import stats
-urlpatterns = [path('stats/', stats)]
+from .views import StatsOverview
+
+urlpatterns = [
+    path('', StatsOverview.as_view(), name='stats-overview'),
+]

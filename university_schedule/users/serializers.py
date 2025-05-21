@@ -16,3 +16,17 @@ class RegisterSerializer(serializers.ModelSerializer):
             role=validated_data.get('role')
         )
         return user
+
+class UserSerializer(serializers.ModelSerializer):
+    # виводимо назву групи, а не лише ID
+    group = serializers.CharField(source='group.name', read_only=True)
+
+    class Meta:
+        model = CustomUser
+        fields = (
+            'id',
+            'username',
+            'email',
+            'role',
+            'group',
+        )
