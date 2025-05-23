@@ -22,7 +22,7 @@ class GroupSerializer(serializers.ModelSerializer):
 class TeacherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Teacher
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'user_id']
 
 
 class ScheduleEntrySerializer(serializers.ModelSerializer):

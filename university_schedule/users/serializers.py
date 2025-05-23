@@ -18,7 +18,6 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 class UserSerializer(serializers.ModelSerializer):
-    # виводимо назву групи, а не лише ID
     group = serializers.CharField(source='group.name', read_only=True)
 
     class Meta:
